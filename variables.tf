@@ -7,7 +7,7 @@ variable "instance_type" {
 variable "ami_filter" {
   description = "Name filter and owner for AMI"
 
-  type = Object({
+  type = object({
     name  = string
     owner = string
   })
@@ -21,7 +21,7 @@ variable "ami_filter" {
 variable "environment" {
   description = "Deve Environment"
 
-  type = Object({
+  type = object({
     name           = string
     network_prefix = string
   })
