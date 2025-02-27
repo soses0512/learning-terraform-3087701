@@ -38,7 +38,7 @@ module "autoscaling" {
   source  = "terraform-aws-modules/autoscaling/aws"
   version = "6.5.2"
 
-  name = "${var.environment.network_prefix}-blog"
+  name = "${var.environment.name}-blog"
   min_size = var.asg_min_size
   max_size = var.asg_max_size
 
@@ -54,7 +54,7 @@ module "blog_alb" {
   source  = "terraform-aws-modules/alb/aws"
   version = "~> 6.0"
 
-  name    = "${var.environment.network_prefix}-alb"
+  name    = "${var.environment.name}-alb"
 
   vpc_id          = module.blog_vpc.vpc_id
   subnets         = module.blog_vpc.public_subnets
@@ -85,7 +85,7 @@ module "blog_alb" {
 module "blog_sg" {
   source  = "terraform-aws-modules/security-group/aws"
   version = "5.3.0"
-  name    = "${var.environment.network_prefix}-blog"
+  name    = "${var.environment.name}-blog"
   
   vpc_id = module.blog_vpc.vpc_id
 
